@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>拖拽效果</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			width: 1560px;
+			height: 1000px;
+		}
+		#main{
+			width: 100px;
+			height: 100px;
+			background-color: coral;
+			position: absolute;
+			left: 0;
+			top: 0;
+			cursor: move;
+		}
+	</style>
+</head>
+<body>
+	<div id="main"></div>
+	<script>
+		var oMain = document.getElementById("main");
+		function getScroller(){
+			var left = document.body.scrollLeft || document.documentElement.scrollLeft;
+			var top = document.body.scrollTop || document.documentElement.scrollTop;
+			return {'l':left,'t':top};
+		}
+		oMain.onmousedown = function(e){
+			var e = e || window.event;
+			e.preventDefault();
+			// 记录刚开始点击的位置
+			// 点击的时候鼠标距离main的距离
+			var scrollleft = getScroller().l;
+			var scrolltop = getScroller().t;
+			var leftinMain = e.clientX - oMain.offsetLeft + scrollleft;
+			var topinMain = e.clientY - oMain.offsetTop + scrolltop;
+			
+			oMain.onmousemove = function(e){
+				var e = e || window.event;
+				e.preventDefault();
+				var x = e.clientX - leftinMain;
+				var y = e.clientY - topinMain;
+				var maxX = document.documentElement.clientWidth-oMain.offsetWidth;
+				var maxY = document.documentElement.clientHeight-oMain.offsetHeight;
+
+				if (x<=0) {x=0;}
+				if (x>=maxX) {x=maxX;}
+				if (y<=0) {y=0;}
+				if (y>=maxY) {y=maxY;}
+
+				oMain.style.left = x + scrollleft + 'px';
+				oMain.style.top = y + scrolltop + 'px';
+			}
+		}
+		oMain.onmouseup = function(){
+			oMain.onmousemove = null;
+		}
+	</script>
+</body>
+</html>

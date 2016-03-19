@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>图片及文本的顺序、循环切换</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.btn_group{
+			width: 212px;
+			margin: 0 auto;
+			margin-top: 100px;
+		}
+		.btn_group input{
+			width: 100px;
+			height: 30px;
+			line-height: 30px;
+		}
+		.container{
+			max-width: 640px;
+			margin: 10px auto;
+			font-family: "SimHei","Arial";
+			position: relative;
+		}
+		img{
+			width: 640px;
+			display: block;
+		}
+		a{
+			width: 50px;
+			height: 50px;
+			line-height: 50px;
+			font-weight: bold;
+			border: 3px solid #f1f1f1;
+			font-size: 50px;
+			color: white;
+			background-color: black;
+			opacity: 0.5;
+			text-align: center;
+			text-decoration: none;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			margin: auto;
+		}
+		a:hover{
+			opacity: 0.8;
+		}
+		#prev{
+			left: 5px;
+		}
+		#next{
+			right: 5px;
+		}
+		span,p{
+			width: 100%;
+			height: 30px;
+			color: white;
+			line-height: 30px;
+			text-align: center;
+			background-color: black;
+			opacity: 0.7;
+			position: absolute;
+		}
+		p{
+			bottom: 0;
+		}
+	</style>
+</head>
+<body>
+	<div class="btn_group">
+		<input id="btn1" type="button" value="循环切换">
+		<input id="btn2" type="button" value="顺序切换">
+	</div>
+	<div class="container">
+		<a id="prev" href="javascript:;"><</a>
+		<a id="next" href="javascript:;">></a>
+		<span id="span">计算中.......</span>
+		<p id="text">这是一段介绍文本</p>
+		<img id="img" src="../img/1.jpg" alt="">
+	</div>
+	<script>
+		var arrImg=['../img/1.jpg','../img/2.jpg','../img/3.jpg','../img/4.jpg','../img/5.jpg'];
+		var arrText=['功夫熊猫','飞屋环游记','汽车总动员','未知动画','机器人总动员'];
+		var oBtn1=document.getElementById("btn1");
+		var oBtn2=document.getElementById("btn2");
+		var prev=document.getElementById("prev");
+		var next=document.getElementById("next");
+		var oSpan=document.getElementById("span");
+		var oText=document.getElementById("text");
+		var oImg=document.getElementById("img");
+		var num=0;
+		function fn(){
+			oImg.src=arrImg[num];
+			oSpan.innerHTML=(num+1)+" / "+arrImg.length;
+			oText.innerHTML=arrText[num];
+		}
+		function fnTab(){
+			fn();
+			prev.onclick=function () {
+				num--;
+				if(num==-1) num=arrImg.length-1;
+				fn();
+			}
+			next.onclick=function () {
+				num++;
+				if(num==arrImg.length) num=0;
+				fn();
+			}
+		}
+		fnTab();
+		function fnTab2(){
+			fn();
+			prev.onclick=function () {
+				num--;
+				if(num==-1) {num=0; alert("这是第一张，前面没有了");}
+				fn();
+			}
+			next.onclick=function () {
+				num++;
+				if(num==arrImg.length) {num=arrImg.length-1; alert("这是最后一张了");}
+				fn();
+			}
+		}
+		oBtn1.onclick=function(){
+			fnTab();
+		}	
+		oBtn2.onclick=function(){
+			fnTab2();
+		}
+	</script>
+</body>
+</html>

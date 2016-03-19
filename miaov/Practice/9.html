@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>展开收缩</title>
+	<style>
+		p{
+			width: 400px;
+			padding: 20px;
+			border: 10px solid #ddd;
+			background-color: yellow;
+		}
+	</style>
+</head>
+<body>
+	<p><span id="s1">今天讲一种PDF和网页备份两者结合保存备份的方式，这种方式较以上方式或其它方式更加完美，因为PDF的图片无法完美导出，而网页保存的方式可以直接将所有图片导出，两者结合起来备份几乎完美。目前来看，我认为网页打印PDF保存+网页直接保存是目前最便捷也是最好的方式之一，肯定有更完美的方式，但对大多数人来说，这更便捷...</span><a id="more" href="#">>>收缩</a></p>
+	<script>
+	var oS1 = document.getElementById("s1");
+	var oMore = document.getElementById("more");
+	var str = oS1.innerHTML;
+	var flag = true;
+	oMore.onclick = function(){
+		// console.log(str.substring(0,21));
+		if (flag) {
+			oS1.innerHTML = str.substring(0,21);
+			this.innerHTML = "<<展开";
+			flag = false;
+		}else{
+			oS1.innerHTML = str;
+			this.innerHTML = ">>收缩";
+			flag = true;
+		}
+		
+	}
+	</script>
+</body>
+</html>

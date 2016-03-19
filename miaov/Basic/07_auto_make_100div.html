@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#divs div{
+			width: 50px;
+			height: 50px;
+			background-color: red;
+			position: absolute;
+			color: white;
+			text-align: center;
+			font-size: 24px;
+			font-weight: bold;
+			font-family: "SimHei";
+			line-height: 50px;
+		}
+	</style>
+</head>
+<body>
+	<input id="btn1" type="button" value="自动生成100个div，每10个换行">
+	<div id="divs"></div>
+	<script>
+	window.onload = function(){
+		function getId(id){
+			return document.getElementById(id);
+		}
+		var oBtn1 = getId("btn1");
+		var oDiv1 = getId("divs");
+		var str='';
+		var arr = ['red','orange','yellow'];
+		// var arr = ['red','orange','yellow','green','cyan','blue','purple'];
+		var aDiv = oDiv1.getElementsByTagName("div");
+		var OnOff = true;
+		// oBtn1.onclick = function(){
+		// 	if(OnOff){
+		// 		for (var i = 1; i <= 100; i++) {
+		// 			str="<div>"+i+"</div>";
+		// 			oDiv1.innerHTML+= str;
+		// 		}
+
+		// 		for (var j = 0,k = 0; j < aDiv.length; j++) {
+		// 			aDiv[j].style.left = 10+60*(j%10)+'px';
+		// 			if (j%10==0) {
+		// 				k++;
+		// 			}
+		// 			var n = j%arr.length;
+		// 			aDiv[j].style.backgroundColor = arr[n];
+		// 			aDiv[j].style.top = 40+60*(k-1)+'px';
+		// 		}
+		// 		OnOff = false;
+		// 	}
+		// }
+
+		oBtn1.onclick = function(){
+			for (var i = 0; i<100; i++){
+                str = '<div>'+ i + '</div>'
+                oDiv1.innerHTML += str;
+            }
+            for (var i = 0; i<100; i+=10){
+                for (var j = 0; j<10 ;j++){
+                    aDiv[i+j].style.left = 10 + j*60 + 'px';
+                    aDiv[i+j].style.top = 50 + i*6 + 'px';
+	                var n = (i+j)%arr.length;
+	                aDiv[i+j].style.backgroundColor = arr[n];
+                }
+            }
+		}
+	}
+	</script>
+</body>
+</html>

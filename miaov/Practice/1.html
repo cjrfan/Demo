@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自定义滚动条</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			height: 2000px;
+		}
+		#main{
+			width: 300px;
+			height: 400px;
+			border: 1px solid #333;
+			padding-right: 16px;
+			font-size: 23px;
+			overflow: hidden;
+			position: relative;
+			left: 20px;
+		}
+		#con{
+			width: 300px;
+			position: absolute;
+		}
+		#scrollbar{
+			height: 400px;
+			width: 16px;
+			background-color: #eee;
+			position: absolute;
+			right: 0;
+			top: 1px;
+		}
+		#bar{
+			width: 16px;
+			height: 48px;
+			border-radius: 8px;
+			background-color: silver;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		#bar:hover{
+			background-color: #d0d0d0;
+		}
+	</style>
+</head>
+<body>
+	<div id="main">
+		<div id="scrollbar"><div id="bar"></div></div>
+		<div id="con">解析HTML以构建DOM树：渲染引擎开始解析HTML文档，转换树中的html标签或js生成的标签到DOM节点，它被称为 -- 内容树。构建渲染树：解析CSS（包括外部CSS文件和样式元素以及js生成的样式），根据CSS选择器计算出节点的样式，创建另一个树渲染树。布局渲染树: 从根节点递归调用，计算每一个元素的大小、位置等，给每个节点所应该出现在屏幕上的精确坐标。绘制渲染树：遍历渲染树，每个节点将使用UI后端层来绘制。 对于DOM结构中的各个元素都有自己的盒子（模型），这些都需要浏览器根据各种样式（浏览器的、开发人员定义的等）来计算并根据计算结果将元素放到它该出现的位置，这个过程称之为reflow；当各种盒子的位置、大小以及其他属性，例如颜色、字体大小等都确定下来后，浏览器于是便把这些元素都按照各自的特性绘制了一遍，于是页面的内容出现了，这个过程称之为repaint。 可见这两个东东对浏览器渲染页面是很重要的啊，都是会影响性能的，因此我们需要了解一些常见的会引起repaint和reflow的一些操作，并且应该尽量减少以提高渲染速度。</div>
+	</div>
+	<!-- <div>lorem200</div> -->
+	<script>
+		var oMain = document.getElementById("main");
+		var oCon = document.getElementById("con");
+		var oSBar = document.getElementById("scrollbar");
+		var oBar = document.getElementById("bar");
+		var maxY;
+		// DOM0级事件
+		oBar.onmousedown = function(e){
+			var e = e || window.event;
+			e.preventDefault();
+			var startY = e.clientY;
+			// var oY = this.offsetTop;
+			var yInBar = startY - oBar.offsetTop;
+
+			document.onmousemove = function(e){
+				var e = e || window.event;
+				e.preventDefault();
+				var endY = e.clientY;
+				// var top = endY -startY+oY;
+				var top = endY - yInBar;
+
+				scroll(top);
+			};
+			
+			document.onmouseup = function(e){
+				document.onmousemove = null;
+			};
+			return false;
+		};
+
+		function scroll(top){
+			var maxY = oSBar.offsetHeight-oBar.offsetHeight;
+			if (top<=0) {top=0;}
+			if (top>=maxY) {top=maxY;}
+			oBar.style.top = top + 'px';
+
+			// 内容滚动
+			var oConMax = oCon.offsetHeight-oMain.clientHeight;
+			var oConTop = (top*oConMax)/maxY;
+			oCon.style.top = -oConTop + 'px';
+
+			// scale = oBar.offsetTop/maxY;
+			// oCon.style.top = -scale*(oConMax)+'px';
+		}
+
+		function mouseWheel(aDom,fn){
+		    if(window.navigator.userAgent.indexOf("Firefox") > -1){
+		        aDom.addEventListener('DOMMouseScroll',wheel,false);
+		    }else{
+		        aDom.onmousewheel = wheel;
+		    }
+		    var down = false,a=0;
+		    function wheel(e){
+		        if(e.detail){
+		            e.detail>0?(down=true):(down=false);
+		        }
+		        else if(e.wheelDelta){
+		            e.wheelDelta>0?(down=false):(down=true);
+		        }
+		        fn.call(aDom,down); 
+		    }
+		}
+
+		
+
+		mouseWheel(oMain,function(down){
+			var t = oBar.offsetTop;// var t = parseInt(getComputedStyle(oBar,null).top);
+			if (down) {
+				t += 10;
+			}else{
+				t -= 10;
+			}
+			scroll(t);
+			return false;
+		});
+		oMain.onmouseenter = function(){
+			document.onkeydown = function(e){
+				var e = e || window.event;
+				e.preventDefault();
+				var t = oBar.offsetTop;
+				if (e.keyCode=='38') {
+					t -= 10;
+				}else if(e.keyCode=='40'){
+					t += 10;
+				}
+				scroll(t);
+			};
+			document.onmousewheel = function(e){
+				var e = e || window.event;
+				if (e.preventDefault) {
+					e.preventDefault();
+				}
+				else{	
+					e.returnValue = false;
+				}
+				return false;
+			}
+		}
+		oMain.onmouseleave = function(){
+			document.onkeydown = null;
+			document.onmousewheel = null;
+		}
+		
+
+		oSBar.onclick = function(e){
+			var e = e || window.event;
+			var t = e.clientY - oMain.offsetTop-oBar.offsetHeight/2;
+			scroll(t);
+		}
+	</script>
+</body>
+</html>

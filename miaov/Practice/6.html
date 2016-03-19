@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul,li{
+			list-style: none;
+		}
+		ul{
+			/* width: 200px; */
+			position: absolute;
+			left: 200px;
+			top: 0;
+			display: none;
+			box-shadow: 0 0 5px 5px #f1f1f1;
+		}
+		li{
+			position: relative;
+		}
+		
+		#main li{
+			width: 200px;
+			line-height: 30px;
+			text-align: center;
+			background-color: skyblue;
+			border: 1px solid #666;
+			/* box-sizing: border-box; */
+		}
+		#main li:hover{
+			background-color: coral;
+		}
+		
+	</style>
+</head>
+<body>
+	<ul id="main">
+		<li>1</li>
+		<li>2</li>
+		<li>3
+			<ul>
+				<li>1</li>
+				<li>2</li>
+				<li>3
+					<ul>
+						<li>1</li>
+						<li>2</li>
+						<li>3</li>
+						<li>4</li>
+					</ul>
+				</li>
+				<li>4</li>
+				<li>5</li>
+			</ul>
+		</li>
+		<li>4</li>
+		<li>5</li>
+		<li>6</li>
+	</ul>
+
+	<script>	
+		var oMain = document.getElementById("main");
+		var winWidth = document.documentElement.clientWidth;
+		var winHeight = document.documentElement.clientHeight;
+
+		var lis = oMain.getElementsByTagName('li');
+
+		function offsetPos(obj){
+		  	var left = obj.offsetLeft;
+		  	var top = obj.offsetTop;
+		  	var parent = obj.offsetParent;
+
+		  	while (parent) {
+		    	left+=parent.offsetLeft+parent.clientLeft;
+		    	top+=parent.offsetTop+parent.clientTop;
+		    	parent=parent.offsetParent;
+		  	}
+		  	return {"l":left,"t":top};
+		}
+
+		for(var i=0;i<lis.length;i++){
+			lis[i].onmouseenter = function(){
+				if (this.children.length) {
+					this.children[0].style.display = "block";
+					this.children[0].style.zIndex = 5;
+
+					// 临界判断
+					var ulLeft = offsetPos(this.children[0]).l;
+					if (winWidth-ulLeft<this.children[0].offsetWidth) {
+						console.log(this.children[0].offsetWidth);
+						this.children[0].style.left = -this.children[0].offsetWidth+'px';
+					}
+
+					var ulTop = offsetPos(this.children[0]).t;
+					if (winHeight-ulTop<this.children[0].offsetHeight) {
+						this.children[0].style.top = -this.children[0].offsetHeight+30*1+'px';
+					}
+				}
+			};
+			lis[i].onmouseleave = function(){
+				if (this.children.length) {
+					this.children[0].style.display = "none";
+					this.children[0].style.left = 200+'px';
+					this.children[0].style.top = 0;
+				}
+			};
+		}
+
+
+		document.oncontextmenu = function(e){
+			var e = e || window.event;
+			e.preventDefault();
+			
+			// reflow repaint
+			oMain.style.display = "block";
+			oMain.style.zIndex = 9999;
+
+			var x = e.clientX;
+			var y = e.clientY;
+			var maxX = winWidth-oMain.offsetWidth;
+			var maxY = winHeight-oMain.offsetHeight;
+			
+			// 临界值
+			if (x>=maxX) {
+				// x=x-oMain.offsetWidth;
+				x=winWidth-oMain.offsetWidth;
+			}
+			if (y>=maxY) {
+				// y=y-oMain.offsetWidth;
+				y=winHeight-oMain.offsetHeight;
+			}
+
+			oMain.style.left = x+'px';
+			oMain.style.top = y+'px';
+		
+		}
+		
+		document.onclick = function(e){
+			oMain.style.display = "none";
+		}
+	</script>
+</body>
+</html>

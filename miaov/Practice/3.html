@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#main{
+			width: 450px;
+			height: 450px;
+			border: 1px solid #ddd;
+			float: left;
+			position: relative;
+			cursor: move;
+		}
+		#HDImg{
+			width: 540px;
+			height: 540px;
+			border: 1px solid #ddd;
+			overflow: hidden;
+			float: left;
+		}
+		#mask{
+			/* width: 200px;
+			height: 200px;
+			width: 303px;
+			height: 303px; */
+			border: 1px solid #ddd;
+			background-color: yellow;
+			opacity: 0.5;
+			cursor: all-scroll;
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="main">
+		<img id="left_img" src="img.jpg" alt="">
+		<div id="mask"></div>
+	</div>
+	<div id="HDImg">
+		<img id="right_img" src="hdimg.jpg" alt="">
+	</div>
+
+	<script>
+		var oMain = document.getElementById("main");
+		var oMask = document.getElementById("mask");
+		var oHDImg = document.getElementById("HDImg");
+		var left_img = document.getElementById("left_img");
+		var right_img = document.getElementById("right_img");
+
+		oMask.style.display = "none";
+		oHDImg.style.display = "none";
+
+		oMask.onmousemove = function(event){
+			var e = event||window.event;
+
+			// left = [0,oMain.clientWidth-oMask.offsetWidth]
+			
+			var left = e.clientX-oMask.offsetWidth/2-oMain.offsetLeft-oMain.clientLeft;
+			// console.log(left);
+			var top = e.clientY-oMask.offsetHeight/2-oMain.offsetTop-oMain.clientTop;
+			// console.log(top);
+			var maxX = oMain.clientWidth-oMask.offsetWidth;
+			var maxY = oMain.clientHeight-oMask.offsetHeight;
+			if (left<=0) {left=0;}
+			if (left>=maxX){left=maxX;}
+			if (top<=0) {top=0;}
+			if (top>=maxY){top=maxY;}
+
+
+			oMask.style.left = left + 'px';
+			oMask.style.top = top + 'px';
+
+
+			// 
+			// var rate = oHDImg.clientWidth/oMain.clientWidth;
+			// var rate = right_img.offsetWidth/leftImg.offsetWidth;
+			var rate = (right_img.clientWidth-oHDImg.offsetWidth)/(oMain.clientWidth-oMask.offsetWidth);	
+
+			oHDImg.scrollLeft = left*rate;
+			oHDImg.scrollTop = top*rate;
+		}
+		oMain.onmouseover = function(){
+			oMask.style.display = "block";
+			oHDImg.style.display = "block";
+
+			var w = oHDImg.clientWidth*oMain.clientWidth/right_img.clientWidth;
+			var h = oHDImg.clientHeight*oMain.clientHeight/right_img.clientHeight;
+
+			oMask.style.width = w+'px';
+			oMask.style.height = h+'px';
+		}
+		oMain.onmouseout = function(){
+			oMask.style.display = "none";
+			oHDImg.style.display = "none";
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#divs div{ 
+			width: 50px; 
+			height: 50px; 
+			margin: 5px; 
+			background-color: #f00; 
+			font-size: 32px; 
+			line-height: 50px; 
+			color: #fff; 
+			text-align: center; 
+			float: left;
+		}
+		#divs{ 
+			width: 1000px; 
+			margin: 10px auto; 
+			position: relative;
+		}
+		br{ 
+			clear: both;
+		}
+	</style>
+</head>
+<body>
+	<input id="btn1" type="button" value="自动生成100个div，每10个换行">
+	<div id="divs"></div>
+	<script>
+	window.onload = function(){
+		function getId(id){
+			return document.getElementById(id);
+		}
+		var oBtn1 = getId("btn1");
+		var oDiv1 = getId("divs");
+		
+		function boxs (){
+			var boxs = '';
+			oDiv1.innerHTML = '';
+			for(var i=1; i<=100;i++){
+				if((i-1)%10 == 0){
+					boxs += '<br />'
+				}
+				boxs += '<div>' + i + '</div>';
+			}
+			oDiv1.innerHTML+=boxs;
+		}
+		oBtn1.onclick=function(){
+			boxs();
+		}
+
+
+	}
+	</script>
+</body>
+</html>

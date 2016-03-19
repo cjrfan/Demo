@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>设置div样式</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body,html{
+			height: 100%;
+		}
+		ul,li{
+			list-style: none;
+		}
+		.container{
+			width: 100%;
+			height: 100%;
+			min-width: 500px;
+			overflow: hidden;
+			font-family: "SimHei","Arial";
+			background-color: #f1f1f1;
+			position: relative;
+		}
+		.container p,#box{
+			margin: 20px 0 0 20px;
+		}
+		.container p strong{
+			font-size: 24px;
+			display: inline-block;
+			vertical-align: middle;
+		}
+		.container p span{
+			width: 90px;
+			height: 40px;
+			color: white;
+			cursor: pointer;
+			line-height: 40px;
+			text-align: center;
+			display: inline-block;
+			vertical-align: middle;
+			background-color: red;
+		}
+		.container p span:hover{
+			background-color: #ff00fa;
+		}
+		#box{
+			width: 100px;
+			height: 100px;
+			background-color: white; 
+			border: 2px solid black;
+		}
+		#cover{
+			position: absolute;/*IE6*/
+			top: 0;/*FF IE7*/
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: #000;
+			opacity: 0.5;/*FF*/
+			filter: alpha(opacity=50);/*IE*/
+			display: none;
+			position:fixed!important;/*FF IE7*/
+		}
+		#wrap{
+			width: 350px;
+			height: 235px;
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			margin: auto;
+			text-align: center;
+			box-shadow: 0 0 0 25px #8d8d8d;
+			background-color: #fcfcfc;
+			display: none;
+		}
+		.ul1{
+			width: 270px;
+			margin: 20px auto 0;
+		}
+		.ul1 ul,.ul1 ul span{
+			display: inline-block;
+		}
+		.ul1>li{
+			margin-bottom: 8px;
+		}
+		.ul1 ul li{
+			display: inline-block;
+			width: 40px;
+			height: 40px;
+			line-height: 40px;
+			text-align: center;
+			background-color: #ececec;
+			color: #989898;
+			border: 1px solid #ccc;
+		}
+		.ul1 ul li:hover{
+			background-color: lightgreen;
+			color: white;
+			cursor: pointer;
+			border: 1px solid black;
+		}
+		#ul_bgcolor li{
+			color: white;
+		}
+		#ul_bgcolor .red{
+			background-color: red;
+			opacity: 0.5;
+		}
+		#ul_bgcolor .yellow{
+			background-color: orange;
+			opacity: 0.7;
+		}
+		#ul_bgcolor .blue{
+			background-color: blue;
+			opacity: 0.5;
+		}
+		#ul_bgcolor li:hover{
+			opacity: 1;
+		}
+		#wrap a{
+			width: 80px;
+			height: 30px;
+			margin-top: 10px;
+			display: inline-block;
+			line-height: 30px;
+			background-color: blue;
+			color: white;
+			text-decoration: none;
+		}
+		#wrap a:hover{
+			background-color: #5252dc;
+		}
+	</style>
+	<script>
+	window.onload=function(){
+		var set=document.getElementById("set");
+		var oBox=document.getElementById("box");
+		var wrap=document.getElementById("wrap");
+		var cover=document.getElementById("cover");
+		var ul_bgcolor=document.getElementById("ul_bgcolor");
+		var ul_width=document.getElementById("ul_width");
+		var ul_height=document.getElementById("ul_height");
+		var reset=document.getElementById("reset");
+		var confirm=document.getElementById("confirm");
+
+		var li_bgcolor=ul_bgcolor.getElementsByTagName('li');
+		var li_width=ul_width.getElementsByTagName('li');
+		var li_height=ul_height.getElementsByTagName('li');
+
+		set.onclick=function(){
+			wrap.style.display="block";
+			cover.style.display="block";
+		}
+	/*
+		function setColor(arr){
+			for (var i = 0; i < arr.length; i++) {
+				arr[i].onclick=function(){
+					oBox.style.backgroundColor=this.className;
+				}
+			}
+		}
+		setColor(li_bgcolor);
+		function setStyle(arr,name){
+			for (var i = 0; i < arr.length; i++) {
+				arr[i].onclick=function(){
+					oBox.style[name]=this.innerHTML+"px";
+				}
+			}
+		}
+		setStyle(li_width,"width");
+		setStyle(li_height,"height");
+	*/
+		function setStyleXX(arr,name){
+			for (var i = 0; i < arr.length; i++) {
+				arr[i].onclick=function(){
+					if(isNaN(this.innerHTML)){
+						oBox.style[name]=this.className;
+					}else{
+						oBox.style[name]=this.innerHTML+"px";
+					}	
+				}
+			}
+		}
+		setStyleXX(li_bgcolor,"backgroundColor");
+		setStyleXX(li_width,"width");
+		setStyleXX(li_height,"height");
+
+		reset.onclick=function(){
+			oBox.style.cssText="";
+		}
+		confirm.onclick=function(){
+			wrap.style.display="none";
+			cover.style.display="none";
+		}
+	}
+	</script>
+</head>
+<body>
+<div class="container">
+	<p><strong>请为下面的DIV设置样式：</strong><span id="set">点击设置</span></p>
+	<div id="box"></div>
+	<div id="cover"></div>
+	<div id="wrap">
+		<ul class="ul1">
+			<li>
+				<span>请选择背景色：</span>	
+				<ul id="ul_bgcolor">
+					<li class="red">红</li>
+					<li class="yellow">黄</li>
+					<li class="blue">蓝</li>
+				</ul>
+			</li>
+			<li>
+				<span>请选择宽(px)：</span>	
+				<ul id="ul_width">
+					<li>200</li>
+					<li>300</li>
+					<li>400</li>
+				</ul>
+			</li>
+			<li>
+				<span>请选择高(px)：</span>	
+				<ul id="ul_height">
+					<li>200</li>
+					<li>300</li>
+					<li>400</li>
+				</ul>
+			</li>
+		</ul>
+		<div>
+			<a id="reset" href="javascript:;">恢复</a>
+			<a id="confirm" href="javascript:;">确定</a>
+		</div>
+	</div>
+</div>
+</body>
+</html>

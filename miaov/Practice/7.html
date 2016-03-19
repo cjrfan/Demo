@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>微博发文</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul,li{
+			list-style: none;
+		}
+		#main{
+			width: 500px;
+			margin: 20px auto;
+			background-color: #f3f3f3;
+			border: 1px solid #ccc;
+			overflow: hidden;
+		}
+		#send{
+
+		}
+		#send li{
+			width: 474px;
+			margin: 0 auto;
+			margin-top: 15px;
+		}
+		li input[type=text]{
+			width: 430px;
+			height: 32px;
+		}
+		li textarea{
+			width: 432px;
+			height: 112px;
+			vertical-align: top;
+		}
+		li input[type=button]{
+			width: 100px;
+			height: 30px;
+			/* margin-left: 40px; */
+			position: relative;
+			left: 40px;
+		}
+		h2{
+			width: 474px;
+			margin: 10px auto;
+		}
+		#message{
+			width: 474px;
+			margin: 10px auto;
+		}
+		#message li{
+			/* overflow: hidden; */
+		}
+		.user{
+			width: 474px;
+			height: 45px;
+			background-color: #ddd;
+			border-bottom: 1px solid #ccc;
+			line-height: 45px;
+			text-indent: 16px;
+		}
+		.con{
+			width: 474px;
+			padding: 10px 0;
+			background-color: white;
+			text-align: center;
+		}
+		.con a{
+			width: 35px;
+			text-align: center;
+			display: inline-block;
+			vertical-align: middle;
+		}
+		.msg{
+			width: 420px;
+			text-indent: 3em;
+			text-align: left;
+			display: inline-block;
+			vertical-align: middle;
+			white-space: nowrap;
+		}
+	</style>
+	<script src="/tween.js"></script>
+</head>
+<body>
+	<div id="main">
+		<ul id="send">
+			<li>
+				<span>姓名</span>
+				<input id="username" type="text">
+			</li>
+			<li>
+				<span>内容</span>
+				<textarea id="usercon" cols="30" rows="10"></textarea>
+			</li>
+			<li>
+				<input id="btn" type="button" value="提交">
+			</li>
+		</ul>
+		<h2>显示留言</h2>
+		<ul id="message">
+			<!-- <li>
+				<div class="user">bbbb</div>
+				<div class="con">
+					
+					<div class="msg">
+						aaa asfav asafa sfde veqs wvsq sdasdav qwdc ve qvs wdasq sdaq vsa sdad saeq vfsaf safc asv asd asss sfsav afscs vsa sdad saeq vfsaf safc asv asd asss sv afscs
+					</div>
+					<a href="">删除</a>
+				</div>
+			</li> -->
+		</ul>
+	</div>
+
+<script>
+ 	var oUser = document.getElementById("username");
+ 	var oUserCon = document.getElementById("usercon");
+ 	var oBtn = document.getElementById("btn");
+ 	var oMsg = document.getElementById("message");
+
+ 	oMsg.addEventListener('click',function(e){
+ 		// t==a
+ 		var t = e.target;
+ 		console.log(t);
+ 		if (t.nodeName=='A') {
+ 			del(t); 
+ 		}
+ 				
+ 	},false);
+
+ 	function del(aDom){
+ 		var li = aDom.parentNode.parentNode;
+		bounce2();
+		function bounce2(){
+			var start = li.offsetHeight;
+			var end = 0;
+			var d = end - start;
+			var step = 0;
+			var stepMax = 30;
+			// li.style.height = start + 'px';
+			var h = 0;
+			var timer = setInterval(function(){
+				step++;
+				if (step>=stepMax) {
+					clearInterval(timer);
+					timer = null;
+					oMsg.removeChild(li);
+				}
+				h = Tween.Bounce.easeOut(step,start,d,stepMax);
+				li.style.height = h + 'px';
+			},30);
+		}
+	}
+
+ 	oBtn.onclick = sendMsg;
+ 	function sendMsg(){
+ 		if (oUser.value==""||oUserCon.value=="") {
+ 			alert("请输入完整信息");
+ 			return;
+ 		}
+ 		else{
+ 			var li = document.createElement("li");
+ 			// var div1 = document.createElement("div");
+ 			// var div2 = document.createElement("div");
+ 			// var a = document.createElement("a");
+ 		
+
+ 			// js不支持多行字符串
+
+ 			li.innerHTML = '<div class="user">'+oUser.value+'</div>\
+ 			<div class="con">\
+ 			<div class="msg">'+oUserCon.value+'</div>\
+ 			<a isDel="true" href="###">删除</a>\
+ 			</div>';
+
+ 			// li.innerHTML = '<div class="user">'+oUser.value+'</div><div class="con"><div class="msg">'+oUserCon.value+'</div><a>删除</a></div>';
+
+ 			
+ 			li.style.overflow = "hidden";
+ 			// li.setAttribute("style", "overflow:hidden");
+ 			oMsg.appendChild(li);
+ 			// oMsg.insertBefore(li, oMsg.childNodes[0]);
+ 			// oUser.value = "";
+ 			// oUserCon.value = "";
+
+ 			console.log(li.offsetHeight);
+ 			bounce();
+ 			function bounce(){
+				var start = 0;
+				var end = li.offsetHeight;
+				var d = end - start;
+				var step = 0;
+				var stepMax = 30;
+				li.style.height = start + 'px';
+				var h = 0;
+				var timer = setInterval(function(){
+					step++;
+					if (step>=stepMax) {
+						clearInterval(timer);
+						timer = null;
+					}
+					h = Tween.Bounce.easeOut(step,start,d,stepMax);
+					li.style.height = h + 'px';
+				},40);
+			}
+
+ 		}
+ 	}
+
+ 	document.onkeydown = function(e){
+ 		// 键盘事件
+ 		var ev = e || window.event;
+ 		// console.log(ev);
+ 		// console.log(ev.keyCode);
+ 		if (ev.ctrlKey && ev.keyCode==13) {
+ 			sendMsg();
+ 		}
+ 	}
+</script>
+</body>
+</html>

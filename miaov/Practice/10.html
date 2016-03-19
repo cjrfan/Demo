@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>简单瀑布流</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		html,body{
+			width: 100%;
+			height: 100%;
+		}
+		#main{
+			width: 100%;
+			height: 100%;
+			position: relative;
+		}
+		#main div{
+			width: 200px;
+			/* height: 100px; */
+			position: absolute;
+			text-align: center;
+			/* color: white; */
+			font-size: 20px;
+			background-color: skyblue;
+			transition: all 0.35s ease;
+		}
+	</style>
+	<!-- <script src="../../../myJS.js"></script> -->
+	<script>
+
+		window.onload = function(){
+			var oMain = document.getElementById("main");
+			var itemArr = [];	//存储所有的item
+			var hArr = [];
+			var ITEM_WIDTH = 200; //div默认宽度-常量
+			var ITEM_SPACE = 10; //水平和垂直的item间隔
+			var l = 0;
+			var t = 0;
+
+			// for (var i = 0; i < 1000; i++) {
+			// 	console.log(rand(100,300));
+			// }
+
+			// 随机数[0,1) =[100,300]
+			// 随机数(0,1)=(100,300)
+			// [0,1)*a = [0,a) == [0,a-1]
+			// (a,b) == [a+1,b-1]
+			// 
+			// [0,1)*(300-100)=>[0,200)+(100) => [100,300)
+			// [100,301] = [100,300) <= [0,1)*(301-100)=[0,201)+100=[100,301)=[100,300];
+			function rand(min,max){
+				return parseInt(Math.random()*(max-min+1))+min;
+			}
+
+			// 随机创建item num = max-min
+			// 创建瀑布流中的item (min>=0)
+			function createItem(min,max){
+				for (var i = min; i < max; i++) {
+					var div = document.createElement("div");
+					div.innerHTML = i;
+					div.style.height = rand(100,300) + 'px';
+					div.style.lineHeight = div.style.height;
+					// div.style.backgroundColor = "#"+randomColor();
+					// console.log(randomColor());
+					oMain.appendChild(div);
+					itemArr[i] = div;
+				}
+				layout();
+			}
+
+
+			// 布局函数
+			// 对itemArr中所有div进行布局
+			function layout(){
+				var l = 0;	//item left 值
+				var t = 0;	//item top值
+
+				// 屏幕宽度
+				var winWidth = document.documentElement.clientWidth;
+				var first = true;	//标记是否是瀑布流第一行
+				var mainWidth = 0;	//main实际宽度
+
+				for (var i = 0; i < itemArr.length; i++) {
+					if (l+ITEM_WIDTH>=winWidth) {
+						first=false;
+						mainWidth=l;
+						l=0;
+					}
+					if (first) {
+						itemArr[i].style.left = l + 'px';
+						itemArr[i].style.top = t + 'px';
+						// itemArr[i].style.backgroundColor = "#"+randomColor();
+						hArr[i] = itemArr[i].offsetHeight;
+					}else{
+						// 求列的最小值
+						var min = getMin(hArr);
+
+						for (var j = 0; j < hArr.length; j++) {
+							if(hArr[j]==min){
+								itemArr[i].style.top = min + ITEM_SPACE + 'px';
+								itemArr[i].style.left = j*(ITEM_WIDTH + ITEM_SPACE) + 'px';
+								// itemArr[i].style.backgroundColor = "#"+randomColor();
+								hArr[j] += ITEM_SPACE + itemArr[i].offsetHeight;
+
+								break;
+							}
+						}
+					}
+
+					l += ITEM_WIDTH + ITEM_SPACE;
+				} 
+				var  w= mainWidth - ITEM_SPACE;
+				oMain.style.width = w + 'px';
+				oMain.style.left = (winWidth-w)/2+'px';
+			}
+
+			// 求数组中最小值
+			
+
+			function getMin(arr){
+				var min = arr[0];
+				for (var i = 1; i < arr.length; i++) {
+					if (min>arr[i]) {
+						min = arr[i];
+					}
+				}
+				return min;
+			}
+
+			createItem(0,10);
+
+			window.onresize = function(){
+				hArr = [];
+				layout();
+			};
+
+
+			window.onscroll = function(){
+				var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+		
+				var winHeight = document.documentElement.clientHeight;
+				var max = Math.max.apply(null,hArr);
+				var num = itemArr.length;
+				if (scrollTop+winHeight>=max-30) {
+					createItem(num,num+10);
+				}
+			};
+		};
+	</script>
+
+	
+</head>
+<body>
+	<div id="main">
+		
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<title>方块碰撞检测变颜色</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#main{
+			width: 100px;
+			height: 100px;
+			background-color: #ccc;
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+		#box{
+			width: 100px;
+			height: 100px;
+			background-color: yellow;
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			margin: auto;
+		}
+	</style>
+</head>
+<body>
+	<div id="main"></div>
+	<div id="box"></div>
+	
+	<script>
+		var oMain = document.getElementById("main");
+		var oBox = document.getElementById("box");
+		var startX,startY,oX,oY;
+
+		// 被碰撞对象info
+		
+		var L2 = oBox.offsetLeft;
+		var T2 = oBox.offsetTop;
+		var R2 = oBox.offsetLeft+oBox.offsetWidth;
+		var B2 = oBox.offsetTop+oBox.offsetHeight;
+				
+		oMain.addEventListener('mousedown',function(e){
+			startX = e.clientX;
+			startY = e.clientY;
+			// console.log(startX)
+			oX = e.target.offsetLeft;
+			oY = e.target.offsetTop;
+			// console.log(oX);
+			oMain.addEventListener('mousemove',mouseMove,false);
+
+		},false);
+
+		function mouseMove(e){
+			var t = e.target;
+			// console.log(t);
+			var endX = e.clientX;
+			var endY = e.clientY;
+			
+			var left = endX - (startX-oX);
+			// console.log('startX'+startX);
+			// console.log('oX'+oX);
+			var top = endY - (startY-oY);
+			// console.log(left);
+			e.target.style.left = left + 'px';
+			e.target.style.top = top + 'px';
+
+			// 被移动元素info
+			var L1 = t.offsetLeft;
+			var T1 = t.offsetTop;
+			var R1 = L1+t.offsetWidth;
+			var B1 = T1+t.offsetHeight;
+
+			// 碰撞检测
+			if ((L1<R2&&R1>L2)&&(B1>T2&&T1<B2)) {
+				t.style.backgroundColor = 'red';
+			}else{
+				t.style.backgroundColor = '#ccc';
+			}
+		}
+
+		oMain.addEventListener('mouseup',function(e){
+			oMain.removeEventListener('mousemove',mouseMove,false);
+		},false);
+		
+		
+
+
+	</script>
+</body>
+</html>

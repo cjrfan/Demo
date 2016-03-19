@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>改变div样式</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body,html{
+			width: 100%;
+			height: 100%;
+		}
+		ul,li{
+			list-style: none;
+		}
+		body{
+			position: relative;
+		}
+
+		.container{
+			width: 500px;
+			height: 500px;
+			margin: auto;
+			outline: 1px solid #ccc;
+			position: absolute;
+			background-color: white;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+		}
+		#content{
+			width: 100%;
+			height: 100%;
+			background-color: white;
+			position: relative;
+			/* z-index: 2; */
+		}
+		#btn{
+			width: 100%;
+			height: 40px;
+			line-height: 40px;
+			font-size: 20px;
+			color: white;
+			cursor: pointer;
+			box-sizing: border-box;
+			background-color: #7b7bf9;
+			border: 1px solid #ccc;
+		}
+		#btn:hover{
+			background-color: #5757b3;
+		}
+		#box{
+			width: 100px;
+			height: 100px;
+			line-height: 100px;
+			text-align: center;
+			outline: 2px solid #333;
+			background-color: white;
+			position: absolute;
+			left: 0;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			margin: auto;
+		}
+		#cover{
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			left: 0;
+			top: 0;
+			background-color: #000;
+			opacity: 0.5;
+			alpha: filter(opacity=50);
+			display: none;
+		}
+		#wrap{
+			width: 160px;
+			height: 400px;
+			position: absolute;
+			background-color: white;
+			right: -161px;
+			top: 0;
+			font-size: 0;
+			text-align: center;
+			font-family: "SimHei";
+			outline: 1px solid #ccc;
+			z-index: 2;
+			display: none;
+		}
+		#wrap ul{
+			
+		}
+		#wrap p{
+			font-size: 20px;
+			text-align: left;
+			margin: 20px 0 12px 0;
+		}
+		#wrap li{
+			display: inline-block;
+			width: 35px;
+			height: 35px;
+			line-height: 35px;
+			text-align: center;
+			font-size: 16px;
+			background-color: #f1f1f1;
+			margin-left: 10px;
+			cursor: pointer;
+			color: #190310;
+			border: 1px solid #f12345;
+		}
+		#wrap li:hover{
+			background-color: #ccc;
+			color: #f1f1f1;
+		}
+		#wrap li:active{
+			background-color: #bbb;
+		}
+		#bg,#width,#height{
+			width: 140px;
+			margin: 0 auto;
+		}
+		#wrap ul li:first-child{
+			margin-left: 0;
+		}
+		#bg ul li:first-child{
+			background-color: red;
+			opacity: 0.4;
+		}
+		#bg ul li:nth-child(2){
+			background-color: orange;
+			opacity: 0.4;
+		}
+		#bg ul li:nth-child(3){
+			background-color: #1a1aea;
+			opacity: 0.5;
+		}
+		#wrap #bg ul li:hover{
+			opacity: 0.8;
+		}
+		#bg ul li:nth-child(2):hover{
+			color: black;
+		}
+		#wrap #bg ul li:active{
+			opacity: 1;
+		}
+		#btn_group{
+			margin-top: 20px;
+		}
+		#btn_group button{
+			display: inline-block;
+			width: 65px;
+			height: 30px;
+			line-height: 30px;
+			border: none;
+			color: white;
+			background-color: #654341;
+		}
+		#btn_group button:hover{
+			background-color: skyblue;
+		}
+		#reset{
+			margin-right: 5px;
+		}
+	</style>
+</head>
+<body>
+	
+	<div class="container">
+		<div id="content" class="content">
+			<button id="btn">设置样式</button>
+			<div id="box">这是一个div</div>
+
+			<div id="wrap">
+				<div id="bg">
+					<p>选择背景</p>
+					<ul>
+						<li>红</li>
+						<li>黄</li>
+						<li>蓝</li>
+					</ul>
+				</div>
+
+				<div id="width">
+					<p>选择宽度</p>
+					<ul>
+						<li>200</li>
+						<li>300</li>
+						<li>400</li>
+					</ul>
+				</div>
+
+				<div id="height">
+					<p>选择高度</p>
+					<ul>
+						<li>200</li>
+						<li>300</li>
+						<li>400</li>
+					</ul>
+				</div>
+
+				<div id="btn_group">
+					<button id="reset">恢复</button>
+					<button id="confirm">确认</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="cover"></div>
+	<script>
+		var oBtn=document.getElementById("btn");
+		var oBg=document.getElementById("bg");
+		var oBox=document.getElementById("box");
+		var wrap=document.getElementById("wrap");
+		var oWidth=document.getElementById("width");
+		var oHeight=document.getElementById("height");
+		var cover=document.getElementById("cover");
+		var reset=document.getElementById("reset");
+		var confirm=document.getElementById("confirm");
+		var content=document.getElementById("content");
+
+		var aBgLi=oBg.getElementsByTagName("li");
+		var aWidthLi=oWidth.getElementsByTagName("li");
+		var aHeightLi=oHeight.getElementsByTagName("li");
+
+		oBtn.onclick=function(){
+			wrap.style.display="block";
+			cover.style.display="block";
+			content.style.backgroundColor="#f7f7fd";
+		}
+		reset.onclick=function(){
+			oBox.style="";
+		}
+		confirm.onclick=function(){
+			wrap.style.display="none";
+			cover.style.display="none";
+		}
+
+		aBgLi[0].onclick=function(){
+			oBox.style.backgroundColor="red";
+			oBox.style.color="white";
+		}
+		aBgLi[1].onclick=function(){
+			oBox.style.backgroundColor="yellow";
+			oBox.style.color="black";
+		}
+		aBgLi[2].onclick=function(){
+			oBox.style.backgroundColor="blue";
+			oBox.style.color="white";
+		}
+		for (var i = 0; i < aWidthLi.length; i++) {
+			aWidthLi[i].onclick=function(){
+				oBox.style.width=this.innerHTML+"px";
+			}
+		}
+		for (var i = 0; i < aHeightLi.length; i++) {
+			aHeightLi[i].onclick=function(){
+				oBox.style.height=this.innerHTML+"px";
+				oBox.style.lineHeight=this.innerHTML+"px";
+			}
+		}
+	</script>
+</body>
+</html>

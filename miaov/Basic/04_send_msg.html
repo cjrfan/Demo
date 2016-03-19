@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>模拟手机发送消息</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			font-family: "SimHei";
+		}
+		.phone{
+			width: 289px;
+			height: 594px;
+			margin: auto;
+			margin-top: 10px;
+			background: url('../img/phone.png') no-repeat;
+			position: relative;
+		}
+		#box{
+			width: 237px;
+			height: 418px;
+			position: absolute;
+			top: 88px;
+			left: 26px;
+		}
+		#content{
+			width: 237px;
+			height: 368px;
+			overflow-y: auto;
+			font-size: 0;
+		}
+		#bottom{
+			width: 237px;
+			height: 50px;
+			border-top: 1px solid #999;
+			position: absolute;
+			bottom: 0;
+			font-size: 0;
+			text-align: center;
+			background-color: #f1f1f1;
+		}
+		#bottom::before{
+			content: " ";
+			width: 0;
+			height: 100%;
+			display: inline-block;
+			vertical-align: middle;
+		}
+
+		#bottom img{
+			width: 35px;
+			height: 35px;
+			border: 1px solid #ccc;
+			vertical-align: middle;
+			border-radius: 5px;
+			margin-right: 3px;
+		}
+		input[type="text"]{
+			width: 150px;
+			display: inline-block;
+			vertical-align: middle;
+			border-radius: 5px;
+			border: 1px solid #ccc;
+			height: 35px;
+			font-size: 20px;
+		}
+		input[type="button"]{
+			width: 40px;
+			height: 35px;
+			background-color: white;
+			border: none;
+			cursor: pointer;
+			font-size: 20px;
+			font-weight: bold;
+			color: #666;
+			display: inline-block;
+			vertical-align: middle;
+		}
+
+		#content .div1,#content .div2{
+			width: 92%;
+			/* margin-top: 10px; */
+		}
+		#content .div2{
+			float: right;
+		}
+		#content .text1,#content .text2{
+			max-width: 145px;
+			padding: 10px;
+			background-color: #f1f1f1;
+			border-radius: 5px;
+			word-break: break-all; 
+			margin: 10px 0 0;
+			display: inline-block;
+			vertical-align: top;
+			font-size: 16px;
+		}
+		#content .text2{
+			background-color: yellow;
+			float: right;
+		}
+		#content .img1,#content .img2{
+			width: 32px;
+			height: 32px;
+			vertical-align: top;
+			margin-top: 10px;
+		}
+		#content .img2{
+			float: right;
+		}
+	</style>
+</head>
+<body>
+	
+	<div class="phone">
+		<div id="box">
+			<div id="content"></div>
+			<div id="bottom">
+				<img id="img" src="../img/06.gif">
+				<input id="text" type="text">
+				<input id="btn" type="button" value="发送">
+			</div>
+		</div>
+	</div>
+
+	<script>
+		var content=document.getElementById("content");
+		var oImg=document.getElementById("img");
+		var oText=document.getElementById("text");
+		var oBtn=document.getElementById("btn");
+
+		var str="";
+		var flag=true;
+
+		oImg.onclick=function(){
+			if (flag) {
+				oImg.src="../img/13.gif";
+				flag=false;
+			}else{
+				oImg.src="../img/06.gif";
+				flag=true;
+			}
+		}
+		oBtn.onclick=function(){
+			var imgSrc=flag?"../img/06.gif":"../img/13.gif";
+			var imgClass=flag?"1":"2";
+			str='<div class="div'+imgClass+'"><img class="img'+imgClass+'" src="'+imgSrc+'"><div class="text'+imgClass+'">'+oText.value+'</div></div>';
+			content.innerHTML=str+content.innerHTML;
+			oText.value="";
+		}
+	</script>
+</body>
+</html>

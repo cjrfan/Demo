@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>生成v形</title>
+	<style>
+		#divs div{ 
+			width: 50px; 
+			height: 50px; 
+			position: absolute; 
+			background-color: #f00; 
+			font-size: 32px; 
+			line-height: 50px; 
+			color: #fff; 
+			text-align: center;
+		}
+		#divs{ 
+			width: 500px; 
+			margin: 10px auto; 
+			position: relative;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" id="btn" value="点击生成V形" />
+	<div id="divs"></div>
+	<script>
+	window.onload = function(){
+		var oBtn = document.getElementById('btn');
+		var oDivs = document.getElementById('divs');
+		function boxs (){
+			var boxs = ''
+			oDivs.innerHTML = '';
+			for(var i=0; i<5;i++){
+				boxs += '<div>' + i + '</div>'
+			}
+			oDivs.innerHTML+=boxs;
+		}
+		function myV(num){
+			var divs = oDivs.getElementsByTagName('div');
+			var divWidth = divs[0].clientWidth;
+			var divHeight = divs[0].clientHeight;
+			var len = divs.length;
+			if(num==1){
+				for (var i = 0; i < len; i++) {
+					divs[i].style.left = i*divWidth + 'px';
+					if(i <= len/2){
+						divs[i].style.top = i*divHeight + 'px';
+					}else{
+						divs[i].style.top =i*divHeight + (Math.floor(len/2)-i)*divHeight*2 + 'px';
+					}
+				};
+			}else if(num == 2){
+				for (var i = 0; i < len; i++) {
+					divs[i].style.left = i*divWidth + 'px';
+					if(i >= len/2){
+						divs[i].style.top = (i-Math.floor(len/2))*divHeight + 'px';
+					}else{
+						divs[i].style.top =(Math.floor(len/2)-i)*divHeight + 'px';
+					}
+				};
+			}else if(num==3){	
+				for (var i = 0; i < len; i++) {
+					divs[i].style.top = i*divHeight + 'px';
+					if(i <= len/2){
+						divs[i].style.left = (Math.floor(len/2)-i)*divWidth + 'px';
+					}else{
+						divs[i].style.left = (i-Math.floor(len/2))*divWidth + 'px';
+					}
+				};
+			}else{
+				for (var i = 0; i < len; i++) {
+					divs[i].style.top = i*divHeight + 'px';
+					if(i >= len/2){
+						divs[i].style.left = i*divWidth + (Math.floor(len/2)-i)*divWidth*2 + 'px';
+					}else{
+						divs[i].style.left = i*divWidth + 'px';
+					}
+				};
+			}	
+		}
+		var value = 1;
+		oBtn.onclick=function(){
+			boxs ();
+			myV(value);
+			value++
+			if(value >4 ){
+				value = 1;
+			}
+		}
+	}
+	</script>
+</body>
+</html>
