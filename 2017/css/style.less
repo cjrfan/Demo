@@ -1,0 +1,672 @@
+@charset "utf-8";
+html, body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    font-size: 1rem;
+}
+body {
+    font-family: sans-serif, Helvetica Neue, Helvetica, Arial;
+    font-size: 62.5%;
+    color:#000;
+}
+.swiper-container {
+    width: 100%;
+    height: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+.swiper-slide {
+    text-align: center;
+    font-size: 1.8rem;
+}
+@keyframes roll{
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}
+.cjr_wrap{
+    position: relative;
+    .music{
+        position: absolute;
+        z-index: 80;
+        width: 8%;
+        top: 0;
+        right: 0;
+        margin-right: 5%;
+        margin-top: 5%;
+        animation: roll 2s linear infinite;
+        img{
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+    }
+    .cjr_up{
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 3%;
+        margin: 0 auto;
+        z-index: 2;
+        width: 5%;
+        height: 2%;
+        img{
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+    }
+}
+
+.cjr_p1{
+    position: relative;
+    // display: none;
+    .cjr_bg{
+        position: fixed;
+        // z-index: -1;
+        width: 100%;
+        height: 100%;
+    } 
+    div{
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        img{
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+    }
+    .cjr_shake{
+        width: 100%;
+        z-index: 1;
+        top: 0;
+    }
+    .cjr_shadow{
+        width: 100%;
+        top: 0;
+    }
+    .cjr_open{
+        top: 20%;
+        width: 35%; 
+        z-index: 2;   
+    }
+    .cjr_clickme{
+        top: 45%;
+        width: 20%;
+    }
+    .cjr_packet1{
+        top: 80%;
+        width: 20%;
+        left: 65%;
+    }
+    .cjr_packet2{
+        top: 75%;
+        width: 20%;
+        right: 40%;
+    }
+    .cjr_bottom{
+        bottom: 0;
+        width: 100%;
+    }
+}
+
+.cjr_p2{
+    position: relative;
+    .cjr_bg{
+        position: fixed;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+    }
+    .cjr_p2_wrap{
+        width: 100%;
+        height: 100%;
+        position: relative;
+        .cjr_dian {
+            position:absolute;
+            width: 100%;
+            height: 100%; 
+            top:0;
+            left:0;
+            /*z-index:1;*/
+        }
+        .cjr_p2_top {
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
+        .cjr_p2_bottom {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            z-index: 4;
+        }
+        .cjr_cloud {
+            width: 85%;
+            padding-top: 23%;
+            margin: 0 auto; 
+        }
+        .cjr_mobi{
+            position: absolute;
+            top: 5%;
+            width: 41%;
+            left: 32%;
+        }
+        .cjr_lantern,.cjr_font1,.cjr_peo {
+            position: absolute;
+            width: 100%;
+            top: 0;
+            left: 0;
+            height: 100%;
+        }
+        .cjr_lantern{
+            z-index: 1;
+        }
+        .cjr_lantern img,.cjr_font1 img,.cjr_peo img{
+            position: absolute;
+        }
+        .cjr_lantern{
+            .cjr_l1 {
+                left: 2%;
+                width: 16%; 
+            }
+            .cjr_l2 {
+                top: 22%;
+                left: 12%;
+                width: 14%;
+            }
+            .cjr_l3 {
+                width: 20%;
+                right: 5%;
+            }
+        } 
+
+        .cjr_font1 {
+            z-index: 2;
+            img {
+                width: 50%;
+                top: 5%;
+                left: 30%;
+            }
+            .cjr_chun {
+                width: 56%;
+                top: 6%;
+                left: 26%;
+            }
+            .cjr_jie {
+                top: 39%;
+                left: 49%;
+                width: 21%;
+            }
+            .cjr_year {
+                width: 9%;
+                left: 63%;
+                top: 29%;
+            }
+            .cjr_happy{
+                width: 6%;
+                top: 40%;
+                left: 40%;
+            }
+            .cjr_newyear {
+                width: 3.5%;
+                top: 49%;
+                left: 47%;
+            }
+            .cjr_turn {
+                width: 39%;
+                height: 77%;
+                position: absolute;
+                top: 51%;
+                right: 19%;
+                img {
+                    position: absolute;
+                    width: 14%;
+                    top: 0;
+                    left: 27%;
+                }
+                .cjr_0 {
+                    top: 4.8%;
+                }
+                .cjr_1 {
+                    top: 9.5%;
+                }
+                .cjr_7 {
+                    top: 14%;
+                }
+            }
+        }
+
+        .circle {
+            width: 71%;
+            bottom: -79px;
+            left: 16%;
+        }
+        .child {
+            width: 45%;
+            bottom: 0;
+            left: 29%;
+        }
+        .cloud2 {
+            width: 24%;
+            bottom: 13%;
+            left: 3%;
+        }
+        .cloud3{
+            bottom: 8%;
+            width: 20%;
+            right: 7%;
+        }
+    }
+}
+
+.cjr_p3{
+    // display: none;  
+    position: relative;
+    .cjr_bg{
+        position: fixed;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+    } 
+    div{
+        position: absolute;
+        img{
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+    }
+    .cjr_bianpao{
+        right: 57%;
+        top: -3%;
+        width: 60%;
+    }
+    .cjr_cloud4{
+        left: 17%;
+        top: 5%;
+        width: 30%;
+    }
+    .cjr_yanhua{
+        right: 0%;
+        top: 5%;
+        width: 65%;
+        img{
+            transform:rotateZ(45deg);
+        }
+    }
+    .cjr_pan{
+        right: 10%;
+        top: 10%;
+        width: 30%;
+    }
+    .cjr_yuanyuan{
+        right: 10%;
+        top: 25%;
+        width: 20%;
+    }
+    .cjr_home{
+        right: 30%;
+        top: 22%;
+        width: 40%;
+        z-index: 2;
+    }
+    .cjr_cloud5{
+        right: 5%;
+        top: 60%;
+        width: 20%;
+    }
+    .cjr_house{
+        left: 0;
+        bottom: 0;
+        width: 115%;
+    }
+    .cjr_family{
+        left: 15%;
+        bottom: 0;
+        width: 83%;
+        z-index: 2;
+    }
+    .cjr_dog{
+        right: 0;
+        bottom: 0;
+        width: 18%; 
+        z-index: 2;
+    }
+    .cjrhouse{
+        right: 0;
+        bottom: 0;
+        width: 90%;
+    }
+}   
+
+.cjr_p4{
+    // display: none;  
+    position: relative;
+    .cjr_bg{
+        position: fixed;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+    }  
+    div{
+        position: absolute;
+        img{
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+    }
+    .cjr_denglong1{
+        left: -15%;
+        top: 0;
+        width: 45%;
+    }
+    .cjr_denglong2{
+        left: 10%;
+        top: 0;
+        width: 25%;
+    }
+    .cjr_denglong3{
+        left: 45%;
+        top: 0;
+        width: 20%;
+    }
+    .cjr_cloud4{
+        left: 24%;
+        top: 16%;
+        width: 25%;
+    }
+    .cjr_cloud5{
+        left: 58%;
+        top: 22%;
+        width: 20%;
+    }
+    .cjr_cele{
+        right: 2%;
+        top: 9%;
+        width: 18%;
+    }
+    .cjr_lion{
+        left: -12%;
+        bottom:3%;
+        width: 70%;
+        z-index: 4;
+    }
+    .cjr_tree{
+        left: 0%;
+        bottom:0%;
+        width: 100%;
+        z-index: 3;
+    }
+    .cjr_round{
+        left: 0%;
+        bottom:19%;
+        width: 100%;
+        z-index: -1;
+    }
+    .cjr_cong{
+        right: 20%;
+        top:28%;
+        width: 8%;
+        img{
+            margin-bottom: 10%;
+        }
+    }
+    .cjr_zhufu{
+        left: 50%;
+        top:28%;
+        width: 20%;
+        overflow: hidden;
+        z-index: 10;
+        img{
+            float: left;
+            width: 25%;
+        }
+    }
+    .cjr_cloud3{
+        right: -3%;
+        top:43%;
+        width: 20%;
+    }
+} 
+
+.p5{
+    position: relative;
+    .cjr_bg{
+        position: fixed;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+    }
+    .wrap1{
+        position: relative;
+        width: 100%;
+        height: 100%;
+        img{
+            position: absolute;
+        }
+        .dot{
+            position:absolute;
+            width: 100%;
+            height: 100%; 
+            top:0;
+            left:0;
+        }
+        .top{
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
+        .win1{
+            width: 36%;
+            top:4%;
+            left: 3%;
+            z-index:0;
+        }
+        .win2{
+            width: 36%;
+            top:4%;
+            right: 3%;
+            z-index: 0;
+        }
+        .year{
+            top: 6%;
+            width: 30%;
+            left: 6%;
+        }
+        .night{
+            top: 8%;
+            width: 22%;
+            left: 40%;
+        }
+        .rice{
+            top: 6%;
+            width: 30%;
+            right: 4%;
+        }
+        .flower1{
+            width: 90%;
+            right: -44%;
+            top: -10%;
+        }
+        .flower2{
+            width: 90%;
+            left: -42%;
+            top: -10%;
+        }
+        .word{
+            width: 77%;
+            left: 13%;
+            top: 25%;
+        }
+        .desk{
+            bottom: 6%;
+        }
+        .eat{
+            bottom: 0;
+        }
+        
+    }
+}
+
+.p6{
+    position: relative;
+    .cjr_bg{
+        position: fixed;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+    }
+    .wrap3{
+        position: relative;
+        width: 100%;
+        height: 100%;
+        img{
+            position: absolute;
+        }
+        .dot{
+            position:absolute;
+            width: 100%;
+            height: 100%; 
+            top:0;
+            left:0;
+        }
+        .top{
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
+        .circle{
+            width: 83%;
+            left: 8%;
+            top: 12%;
+        }
+        .cloud{
+            width: 22%;
+            left: 2%;
+            top: 27%;
+        }
+        .cloud2{
+            width: 29%;
+            right: 3%;
+            top: 46%;
+        }
+        .lantern{
+            position: absolute;
+            width: 100%;
+            top: 0;
+            left: 0;
+            height: 100%;
+            .lg1 {
+                left: 2%;
+                width: 16%; 
+            }
+            .lg2 {
+                top: 22%;
+                left: 12%;
+                width: 14%;
+            }
+            .lg3 {
+                width: 20%;
+                right: 5%;
+            }
+        }
+        
+        .cjr_2,.cjr_0,.cjr_1,.cjr_7{
+            top: 54%;
+            width: 6%;
+            z-index: 5;
+        }
+        .cjr_2{
+            left: 45%;
+        }
+        .cjr_0{
+            left: 53%;
+        }
+        .cjr_1{
+            left: 60%;
+        }
+        .cjr_7{
+            left: 67%;
+        }
+        .ch{
+            top: 10%;
+            width: 65%;
+            left: 20%;
+
+        }
+        .two{
+            width: 25%;
+            top: 50%;
+            z-index: 5;
+            left: 15%;
+        }
+        .zero{
+            width: 17%;
+            top: 59%;
+            z-index: 5;
+            left: 40%;
+        }
+        .one{
+            width: 5%;
+            top: 59%;
+            left: 60%;
+            z-index: 5;
+            transform: rotateZ(25deg);
+        }
+        .seven{
+            width: 13%;
+            top: 59%;
+            left: 70%;
+            transform:scaleX(1.5);
+            z-index: 5;
+        }
+        .year{
+            width: 10%;
+            top: 60%;
+            left: 80%;
+        }
+        .cloud5{
+            width: 25%;
+            top: 70%;
+            left: 67%;
+            z-index: 4;
+        }
+
+        .can{
+            width: 70%;
+            top: 58%;
+            left: 15%;
+            z-index: 3;
+        }
+        .newyear{
+            width: 45%;
+            top: 70%;
+            left: 22%;
+            z-index: 4;
+        }
+        .des{
+            width: 45%;
+            top: 75%;
+            left: 22%;
+            z-index: 5;
+        }
+        .hope{
+            width: 50%;
+            top: 82%;
+            left: 25%;
+        }
+        .bottom{
+            bottom: 0;
+            width: 100%;
+        }
+    }
+}
