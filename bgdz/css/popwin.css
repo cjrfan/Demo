@@ -1,0 +1,37 @@
+@charset "utf-8";
+/* CSS Document */
+.up_box{ width:347px; height:242px; background:#CCC; border-radius:3px; border:1px #e4e4e4 solid;}
+.box_title{background-color: #379be9;
+    border-bottom: 1px solid #eee;
+    border-radius: 2px 2px 0 0;
+    color: #fff;
+    font-size: 14px;
+    height: 36px;
+    line-height: 36px;
+    overflow: hidden;
+  
+    text-overflow: ellipsis;
+    white-space: nowrap;}
+
+.close{ float:right;}
+.close img{ display:block; margin: 12px;}
+.ask a { margin-left:10px;}
+.qu{ height:45px; background-color:#fff; border-bottom:1px #e4e4e4 solid;}
+.qu span{ font-size:14px; color:#587ea4; font-weight:bold; margin-top:20px;
+line-height:45px; margin-left:20px;}
+.an{ height:170px; background-color:#f5f5f5; }
+.an_1{ height:50px;}
+.an_1_left{ float:left; font-size:12px; color:#7d7d7d; margin:10px 0 0 10px;}
+.an_1_right{ float:right; font-size:12px; color:#7d7d7d; margin:10px 10px 0 0;}
+
+
+#n { margin:10px auto; width:920px; border:1px solid #CCC;
+ font-size:14px; line-height:30px; } 
+#n a { padding:0 4px; color:#333 } 
+.Bar ,.Bars { position: relative; width: 300px; background:#cecece;padding: 1px; margin-top:10px; border-radius:5px;} 
+.Bar div,.Bars div { display: block; position: relative;background:#379be9; 
+ height: 5px;ine-height: 5px;border-radius: 5px; } 
+.Bars div{ background:#090} 
+.Bar div span,.Bars div span { position: absolute; width: 200px;
+ /* 宽度 */ text-align: center; font-weight: bold; } 
+.cent{ margin:0 auto; width:350px; overflow:hidden; margin-left:20px; } 

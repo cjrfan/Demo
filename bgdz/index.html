@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>首页</title>
+    <link rel="stylesheet" href="css/lrtk.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/layer.css">
+    <link rel="stylesheet" href="css/popwin.css">
+    <script src="js/jquery-1.8.3.min.js"></script>
+    <script src="js/koala.min.1.5.js"></script>
+    <script src="js/terminator2.2.min.js"></script>
+    <script src="js/layer/layer.js"></script>
+    <script src="js/Index.js"></script>
+    <script src="js/Cal.js"></script>
+    <script src="js/list_slide.js"></script>
+</head>
+<body>
+<div class="topwrap">
+    <div class="top">
+        <div class="top_left"></div>
+        <!-- top_right begin -->
+        <div class="top_right">
+            <div class="hy">欢迎您，李宁！2016年7月10日 星期六 | 待办 (3) 通知 (2)</div>
+            <!--login begin-->
+            <div class="pub_nav">
+                <ul class="pub_nav_list">
+                    <li class="inline last">
+                        <a href="javascript:void(0);" class="">登录<i class="inline pep_bg icon"></i></a>
+
+                        <div class="app_box">
+                            <span class="inline upArre"></span>
+
+                            <div class="bg_fff down_list_box">
+                                <div class="panel_left"><img src="img/icon1.png"/></div>
+                                <div class="panel_right">
+                                    <ul>
+                                        <li class="login_name">
+                                            <input class="login_n_b" type="text" maxlength="128" name="login_name" placeholder=""/>
+                                        </li>
+                                        <li class="login_pwd">
+                                            <input class="login_n_b" type="password" name="login_pwd"/>
+                                        </li>
+                                        <span class="login_btn"><a href="javascript:;">登录</a></span>
+                                        <input id="remember" class="checkbox" type="checkbox" name="remember"/>
+                                        <label for="remember">下次自动登录</label>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!--login end-->
+
+            <div class="search">
+                <input class="text" type="text" onblur="if (this.value == '') {this.value = '请输入关键字！';}" onfocus="if (this.value == '请输入关键字！') {this.value = '';}" value="请输入关键字！">
+
+                <div class="search_right">
+                    <input class="image" type="submit" value="站内搜索">
+                </div>
+            </div>
+        </div>
+        <!-- top_right end -->
+
+        <!-- menu begin -->
+        <div class="menu">
+            <ul>
+                <li>
+                    <a class="hide" href="index.html">首页</a>
+                    <!--[if lte IE 6]>
+                    </td></tr></table>
+                    </a>
+                    <![endif]-->
+                </li>
+                <li>
+                    <a class="hide" href="level_page.html">集团概况</a>
+                    <ul>
+                        <li>
+                            <a class="hide" href="#" title="">公司概况</a>
+                            <ul>
+                                <li><a href="terminal.html" title="">文字介绍</a></li>
+                                <li><a href="terminal.html" title="">图片、音频</a></li>
+                            </ul>
+                        <li><a href="#" title="">发展战略</a></li>
+                        <li><a href="#" title="">企业文化</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="hide" href="level_page.html">新闻中心</a>
+                    <ul>
+                        <li><a href="#" title="">集团要闻</a></li>
+                        <li><a href="#" title="">通知公告</a></li>
+                        <li><a href="#" title="">消息咨询</a></li>
+                        <li><a href="#" title="">文化活动</a></li>
+                        <li><a href="#" title="">榜样力量</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="hide" href="#">日常办公</a>
+                    <ul>
+                        <li><a href="#" title="">集团要闻</a></li>
+                        <li><a href="#" title="">通知公告</a></li>
+                        <li><a href="#" title="">消息咨询</a></li>
+                        <li><a href="#" title="">文化活动</a></li>
+                        <li><a href="#" title="">榜样力量</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="hide" href="#">常用工具</a>
+                    <ul>
+                        <li><a href="#" title="">集团要闻</a></li>
+                        <li><a href="#" title="">通知公告</a></li>
+                        <li><a href="#" title="">消息咨询</a></li>
+                        <li><a href="#" title="">文化活动</a></li>
+                        <li><a href="#" title="">榜样力量</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="hide" href="#">职工园地</a>
+                    <ul>
+                        <li><a href="#" title="">集团要闻</a></li>
+                        <li><a href="#" title="">通知公告</a></li>
+                        <li><a href="#" title="">消息咨询</a></li>
+                        <li><a href="#" title="">文化活动</a></li>
+                        <li><a href="#" title="">榜样力量</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- menu end -->
+    </div>
+</div>
+
+<div class="mainwith">
+    <div class="content_com">
+        <div class="titlebg">
+            <h2>公司动态</h2>
+            <span class="more"><a href="#">更多>></a></span>
+        </div>
+        
+        <!-- 轮播图 -->
+        <div class="news_pic">
+            <!-- 代码 开始 -->
+            <div id="fsD1" class="focus">
+                <div id="D1pic1" class="fPic">
+                    <div class="fcon" style="display: none;">
+                        <a target="_blank" href="#">
+                            <img src="img/new1.jpg" style="opacity: 1;">
+                        </a>
+                        <span class="shadow"><a target="_blank" href="#">北京北广电子</a></span>
+                    </div>
+
+                    <div class="fcon" style="display: none;">
+                        <a target="_blank" href="#">
+                            <img src="img/new2.jpg" style="opacity: 1;">
+                        </a>
+                        <span class="shadow"><a target="_blank" href="#">第十五届北京广电设备展北广电子集团展台</a></span>
+                    </div>
+
+                    <div class="fcon" style="display: none;">
+                        <a target="_blank" href="#">
+                            <img src="img/new1.jpg" style="opacity: 1;">
+                        </a>
+                        <span class="shadow"><a target="_blank" href="#">北京北广电子</a></span>
+                    </div>
+
+                    <div class="fcon" style="display: none;">
+                        <a target="_blank" href="#">
+                            <img src="img/new2.jpg" style="opacity: 1;">
+                        </a>
+                        <span class="shadow"><a target="_blank" href="#">第十五届北京广电设备展北广电子集团展台</a></span>
+                    </div>
+                </div>
+                <div class="fbg">
+                    <div class="D1fBt" id="D1fBt">
+                        <a href="javascript:void(0)" hidefocus="true" target="_self" class=""><i>1</i></a>
+                        <a href="javascript:void(0)" hidefocus="true" target="_self" class=""><i>2</i></a>
+                        <a href="javascript:void(0)" hidefocus="true" target="_self" class="current"><i>3</i></a>
+                        <a href="javascript:void(0)" hidefocus="true" target="_self" class=""><i>4</i></a>
+                    </div>
+                </div>
+                <!-- 左右切换 -->
+                <!-- <span class="prev"></span>   
+                <span class="next"></span> --> 
+            </div>
+            <script type="text/javascript">
+                Qfast.add('widgets', {path: "js/terminator2.2.min.js", type: "js", requires: ['fx']});
+                Qfast(false, 'widgets', function () {
+                    K.tabs({
+                        id: 'fsD1',   //焦点图包裹id
+                        conId: "D1pic1",  //** 大图域包裹id
+                        tabId: "D1fBt",
+                        tabTn: "a",
+                        conCn: '.fcon', //** 大图域配置class
+                        auto: 1,   //自动播放 1或0
+                        effect: 'fade',   //效果配置
+                        eType: 'click', //** 鼠标事件
+                        pageBt: true,//是否有按钮切换页码
+                        bns: ['.prev', '.next'],//** 前后按钮配置class
+                        interval: 3000  //** 停顿时间
+                    })
+                })
+            </script>
+            <!-- 代码 结束 -->
+        </div>
+
+        <div class="hot_news">
+            <ul class="list_style">
+                <li><span class="list_date">2016-07-13</span><a href="#">关于开展2016年自治区突出贡献专家选拔...</a></li>
+                <li><span class="list_date">2016-07-13</span><a href="#">公司主体信用等级调增至AAA...</a></li>
+                <li><span class="list_date">2016-07-13</span><a href="#">上都电厂三期工程安全设施通过验收评定...</a></li>
+                <li><span class="list_date">2016-07-13</span><a href="#">海电获“全区电力工业技术监督先进集体”...</a></li>
+                <li><span class="list_date">2016-07-13</span><a href="#">倪真陪同齐晓飞出席第二届贵商发展大会...</a></li>
+                <li><span class="list_date">2016-07-13</span><a href="#">中东部周末降温4-8℃ 下周或为今冬最冷...</a></li>
+                <li><span class="list_date">2016-07-13</span><a href="#">内蒙古积雪面积超50% 未来五天有风吹雪天气</a></li>
+                <li><span class="list_date">2016-07-13</span><a href="#">15天天气预报靠谱吗？...</a></li>
+                <li><span class="list_date">2016-07-13</span><a href="#">你用过这些网络流行语吗？</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content_channel">
+        <ul>
+            <li class="office">
+                <a class="icony" href="#"><b></b><span>办公系统</span></a>
+            </li>
+            <li class="resources">
+                <a class="iconr" href="#"><b></b><span>人力资源系统</span></a>
+            </li>
+            <li class="finance">
+                <a class="iconf" href="#"><b></b><span>财务预算系统</span></a>
+            </li>
+            <li class="other">
+                <a class="icono" href="#"><b></b><span>其他</span></a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="contentwrap">
+    <div class="content_left">
+        <div class="notice">
+            <div class="title6">
+                <span class="more"><a href="#">更多>></a></span>
+                <div class="iconn"><span><a>通知公告</a></span></div>
+            </div>
+            <div class="not_con">
+                <h2 class="title2">
+                    <a href="#">今冬来最强冷空气将至 南方有雨雪冰冻 </a>
+                    <span class="caption">中国天气网讯 昨天（17日），在冷空气影响下，
+                    北京、太原等地的气温都刷新了今年入冬来新低。不
+                    过，这只是冷空气发威的序曲，本周，今冬来最强冷
+                    空气来袭，我国各地将经历入....<a href="#">详细>></a></span>
+                </h2>
+            </div>
+        </div>
+        <!--日历开始-->
+        <div class="cal">
+            <div class="title1">
+                <div class="more"></div>
+                <div class="iconc"><i></i>日程管理</div>
+                <div id="Demo">
+                    <div id="CalendarMain">
+                        <div id="title">
+                            <div class="today_s">
+                                <a class="selectBtn selectDate" onClick="CalendarHandler.CalculateMonthDays(.CreateSelectYear(CalendarHandler.showYearStart));">1</a></br>
+                                <a class="selectBtn selectDay" onClick="CalendarHandler.CalculateWeek();">星期一</a>
+                            </div>
+                            <div class="today_s02">
+                                <a class="selectBtn month mag" href="javascript:" onClick="CalendarHandler.CalculateLastMonthDays();"><</a>
+                                <a class="selectBtn selectYear" href="javascript:" onClick="CalendarHandler.CreateSelectYear(CalendarHandler.showYearStart);">2014年</a>
+                                <a class="selectBtn selectMonth" onClick="CalendarHandler.CreateSelectMonth()">6月</a>
+                                <a class="selectBtn nextMonth" href="javascript:" onClick="CalendarHandler.CalculateNextMonthDays();">></a>
+                                <a class="selectBtn currentDay" href="javascript:" onClick="CalendarHandler.CreateCurrentCalendar(0,0,0);">今天</a>
+                            </div>
+                            <div style="clear:both"></div>
+                            <div id="context">
+                                <div class="week">
+                                    <h3> 一 </h3>
+                                    <h3> 二 </h3>
+                                    <h3> 三 </h3>
+                                    <h3> 四 </h3>
+                                    <h3> 五 </h3>
+                                    <h3> 六 </h3>
+                                    <h3> 日 </h3>
+                                </div>
+                                <div id="center">
+                                    <div id="centerMain">
+                                        <div id="selectYearDiv"></div>
+                                        <div id="centerCalendarMain">
+                                            <div id="Container"></div>
+                                        </div>
+                                        <div id="selectMonthDiv"></div>
+                                    </div>
+                                </div>
+                        <!--    <div id="foots"><a id="footNow">19:14:34</a></div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--日历结束-->
+
+        <div class="survey">
+            <div class="title1">
+                <span class="more"><a href="#">更多>></a></span>
+                <div class="icons"><i></i>问卷调查</div>
+            </div>
+            <div class="sur_con">
+                <h2 class="title4">
+                    <a href="#">Q1.冒味的问一下您今年年龄多少？ </a>
+                </h2>
+                <ul>
+                    <li> 
+                        <input type="checkbox" name="q[]" id="q1" />
+                        <label for="q1">30岁一下</label>
+                    </li>
+                    <li> 
+                        <input type="checkbox" name="q[]" id="q2" />
+                        <label for="q2">30-40岁</label> 
+                    </li>
+                    <li>  
+                        <input type="checkbox" name="q[]" id="q3" />
+                        <label for="q3">50岁以上</label>
+                    </li>
+                </ul>
+                <div class="sur_bu">
+                </div>
+            </div>
+            <div class="sur_res">
+                <a class="sub" href="#">提交问卷</a>
+                <a id="subQuestion" class="se" href="javascript:;">查看问卷结果</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="content_right">
+        <div class="knowledge">
+            <div class="title3">
+                <span class="more"><a href="#">更多>></a></span>
+                <div class="iconk"><i></i>知识管理</div>
+            </div>
+            <div class="kno_l">
+                <span><a>知识管理</a></span>
+                <ul>
+                    <li><i class="red_bg">1</i><a href="#">今冬来最强冷空气将至 南方有雨雪冰冻...</a></li>
+                    <li><i class="red_bg">2</i><a href="#">中东部周末降温4-8℃ 下周或为今冬最冷...</a></li>
+                    <li><i class="red_bg">3</i><a href="#">北京今有小雪 明日雪过霾消气温降...</a></li>
+                    <li><i>4</i><a href="#">倪真陪同齐晓飞出席第二届贵商发展大会...</a></li>
+                    <li><i>5</i><a href="#">6省市将陷“霾”伏 南方阴雨雪持续...</a></li>
+                    <li><i>6</i><a href="#">内蒙古积雪面积超50% 未来五天有风吹雪天气...</a></li>
+                    <li><i>7</i><a href="#">今冬来最强冷空气将至 南方有雨雪冰冻...</a></li>
+                    <li><i>8</i><a href="#">中东部周末降温4-8℃ 下周或为今冬最冷...</a></li>
+                    <li><i>9</i><a href="#">北京今有小雪 明日雪过霾消气温降...</a></li>
+                </ul>
+            </div>
+            <div class="kno_r ">
+                <span>
+                    <a>知识排名</a>
+                    <div class="mid_tit">
+                        <div id="mid_news_1" class="mid_menu_over"  onmousemove="tabChange(this,'mid_menu_over','mid_menu_out',2,'mid_news');">按点击</div>|
+                        <div id="mid_news_2" class="mid_menu_out" onmousemove="tabChange(this,'mid_menu_over','mid_menu_out',2,'mid_news');">按评分</div>
+                    </div>
+                </span>
+
+                <div id="mid_news_1_info" class="mid_center_content" style="display: block">
+                    <ul>
+                        <li><i class="red_bg">1</i><a href="#">111111111 南方有雨雪冰冻...</a></li>
+                        <li><i class="red_bg">2</i><a href="#">中东部周末降温4-8℃ 下周或为今冬最冷...</a></li>
+                        <li><i class="red_bg">3</i><a href="#">北京今有小雪 明日雪过霾消气温降...</a></li>
+                        <li><i>4</i><a href="#">倪真陪同齐晓飞出席第二届贵商发展大会...</a></li>
+                        <li><i>5</i><a href="#">6省市将陷"霾"伏 南方阴雨雪持续...</a></li>
+                        <li><i>6</i><a href="#">内蒙古积雪面积超50% 未来五天有风吹雪天气...</a></li>
+                        <li><i>7</i><a href="#">今冬来最强冷空气将至 南方有雨雪冰冻...</a></li>
+                        <li><i>8</i><a href="#">中东部周末降温4-8℃ 下周或为今冬最冷...</a></li>
+                        <li><i>9</i><a href="#">北京今有小雪 明日雪过霾消气温降...</a></li>
+                    </ul>
+                </div>
+                <div id="mid_news_2_info" class="mid_center_content" >
+                    <ul>
+                        <li><i class="red_bg">1</i><a href="#">222222222 南方有雨雪冰冻...</a></li>
+                        <li><i class="red_bg">2</i><a href="#">中东部周末降温4-8℃ 下周或为今冬最冷...</a></li>
+                        <li><i class="red_bg">3</i><a href="#">北京今有小雪 明日雪过霾消气温降...</a></li>
+                        <li><i>4</i><a href="#">倪真陪同齐晓飞出席第二届贵商发展大会...</a></li>
+                        <li><i>5</i><a href="#">6省市将陷"霾"伏 南方阴雨雪持续...</a></li>
+                        <li><i>6</i><a href="#">内蒙古积雪面积超50% 未来五天有风吹雪天气...</a></li>
+                        <li><i>7</i><a href="#">今冬来最强冷空气将至 南方有雨雪冰冻...</a></li>
+                        <li><i>8</i><a href="#">中东部周末降温4-8℃ 下周或为今冬最冷...</a></li>
+                        <li><i>9</i><a href="#">北京今有小雪 明日雪过霾消气温降...</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="active">
+            <div class="title3">
+                <span class="more"><a href="#">更多>></a></span>
+                <div class="icona"><i></i>党工活动</div>
+            </div>
+            <div class="act_l"><img src="img/pic1.png" /></div>
+            <div class="act_r"><img src="img/pic2.png" /></div>
+            <div class="act_con">
+                <h2 class="title5">雾凇岛</h2>
+                <span class="act_con_1">雾凇俗称树挂，为中国四大奇观之一，
+                “吉林雾凇天下奇”，而雾凇岛又是吉林最容易形成树挂的地方，由于独特的地理环境，在冬季，升腾起的大雾常常笼罩着这个近6平方公里的小岛，有时竟一天也见不到太阳，这样的天气下挂在树上的雾凇是不会掉落的，并且夜里又会挂上一层。 第二天...<a href="#">详细>></a></span>
+            </div>
+        </div>
+
+        <div class="weather">
+            <div class="title3">
+                <span class="more"><a href="#">更多>></a></span>
+                <div class="iconw"><i></i>今日天气</div>
+                <div class="wea_con">
+                    <img src="img/pic3.png"/>
+                    <div class="wea_con_1">
+                        温度：12°C-17°C <br />
+                        风力：北风1级 <br />
+                        湿度：67% <br />
+                        穿衣指数：凉 <br />
+                        紫外线强度：3 </div>
+                    </div>
+                </div>
+            </div>
+            <div class="birre">
+                <div class="title3">
+                    <span class="more"><a href="#">更多>></a></span>
+                    <div class="iconb"><i></i>生日提醒</div>
+                    <div class="bir_con">
+                        <img src="img/pic4.png"/>
+                        <div class="bir_con_1">
+                            陈明明: <br />
+                            1月5日生日。祝您生日
+                            快乐O(∩_∩)O~~！
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 查看调查问卷结果弹框 -->
+<div id="popwin" style="display:none">
+    <div class="qu">
+        <span>Q1.冒味的问一下您今年年龄多少？</span>
+    </div>
+    <div class="an">
+        <div class="an_1">
+            <div class="an_1_left">
+                <span>1. 30岁以下（已选）</span>
+            </div>
+            <div class="an_1_right">71票</div>
+            <div class="an_1_con">
+                <div class="cent">
+                    <div class="Bar">
+                        <div style="width: 50%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="an_1">
+            <div class="an_1_left">
+                <span>2. 30岁以上（已选）</span>
+            </div>
+            <div class="an_1_right">71票</div>
+            <div class="an_1_con">
+                <div class="cent">
+                    <div class="Bar">
+                        <div style="width: 50%;"></div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
